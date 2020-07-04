@@ -1,0 +1,19 @@
+{
+  "name": "mybot",
+  "version": "1.0.0",
+  "description": "based on Wechaty",
+  "main": "./src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gavinwang23/mybot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gavinwang23/mybot/issues"
+  },
+  "homepage": "https://github.com/gavinwang23/mybot#readme"
+}
