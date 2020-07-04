@@ -1,1 +1,1 @@
-# MYBot
+# MyBot
