@@ -1,0 +1,27 @@
+#packges
+.DS_Store
+node_modules/
+dist/
+
+#logs
+logs
+*.log
+npm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+# TAP Coverage
+coverage
+.nyc_output
+
+# Other staff
+package-lock.json
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
