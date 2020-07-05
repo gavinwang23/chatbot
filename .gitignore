@@ -1,7 +1,5 @@
-#packges
-.DS_Store
+# Dependency directory
 node_modules/
-dist/
 
 #logs
 logs
@@ -18,7 +16,9 @@ coverage
 .nyc_output
 
 # Other staff
+.DS_Store
 package-lock.json
+dist/
 .idea
 .vscode
 *.suo
