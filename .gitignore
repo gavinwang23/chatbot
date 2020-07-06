@@ -25,3 +25,4 @@ dist/
 *.ntvs*
 *.njsproj
 *.sln
+*.memory-card.json
