@@ -4,12 +4,12 @@
  * @Author: wangjunwei
  * @Date: 2020-07-05 08:28:46
  * @LastEditors: wangjunwei
- * @LastEditTime: 2020-07-07 10:26:25
+ * @LastEditTime: 2020-07-07 14:11:06
  */ 
 
 const { Message } = require("wechaty")
 // node-request请求模块包
-const request = require("request")
+//const request = require("request")
 // 请求参数解码
 const urlencode = require("urlencode")
 
@@ -26,13 +26,22 @@ module.exports = bot =>{
         )
         console.log(`to: ${msg.to()}`)
         console.log(`text: ${msg.text()}`)
-        //console.log(`isRoom: ${msg.room()}`)
+        console.log(`isRoom: ${msg.room()}`)
         console.log("=============================")
 
 
-        if (msg.type() == Message.Type.Text) {
+        if (msg.type() == Message.Type.Text && !msg.room()) {
             await msg.say("reply test by myBot")
-        }
+        }   
     }
+
+}
+
+/**
+ * @description: 机聊天器人接口
+ * @param {type} 
+ * @return: 
+ */
+function requestRobot(info){
 
 }
