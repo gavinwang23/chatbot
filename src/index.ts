@@ -4,7 +4,7 @@
  * @Author: wangjunwei
  * @Date: 2020-07-04 21:05:33
  * @LastEditors: wangjunwei
- * @LastEditTime: 2020-07-07 19:36:36
+ * @LastEditTime: 2020-07-07 20:43:01
  */ 
 //const dialogflow = require('dialogflow');
 //import { Wechaty } from 'wechaty'
@@ -30,4 +30,5 @@ bot
 .on('login',            user => console.log(`User ${user} logined`))
 //.on('message',       message => console.log(`Message: ${message}`))
 .on("message", myMessage(bot))
+//.on("baiduBot",baiduBot)
 .start()

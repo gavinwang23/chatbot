@@ -4,7 +4,7 @@
  * @Author: wangjunwei
  * @Date: 2020-07-05 08:28:46
  * @LastEditors: wangjunwei
- * @LastEditTime: 2020-07-07 20:23:30
+ * @LastEditTime: 2020-07-07 21:45:18
  */ 
 
 const { Message } = require("wechaty")
@@ -13,7 +13,7 @@ const { Message } = require("wechaty")
 // 请求参数解码
 const urlencode = require("urlencode")
 const baiduBot = require('./baiduBot.ts')
-
+//import baiduBot from './baiduBot.ts'
 var https = require('https');
 var request = require("request")
 var qs = require('querystring');
@@ -55,8 +55,15 @@ module.exports = bot =>{
 
 }
 
+
+
+
+
+
+
+
 /**
- * @description: 机聊天器人接口
+ * @description: 机聊天器人接口2
  * @param {String} info
  * @return {Promise}
  */
@@ -80,7 +87,7 @@ function requestRobot(info){
                     send=rpcResult.result.response_list[0].action_list[0].say
                     //打印回复的消息
                     //console.log(send)
-                    resolve(send)
+                    resolve(send+"___Send by MyBot")
                 })
                 req.on('error',function (e){
                     console.log(new Error('problem with request:' + e.message));
