@@ -15,6 +15,6 @@ module.exports = {
     puppet_dependence : 'wechaty-puppet-padplus',
     token : 'puppet_padplus_0d3505e8f7001abe',
     name : 'junwei',
-    baidu_apikey : '',
-    baidu_secretkey :''
+    baidu_apikey : 'Adwf4v3V7wa1CiN5WloH2PkP',
+    baidu_secretkey :'rQn3Tap4pcahCBSwdjihxyv3oZTKWFcZ'
   };
