@@ -1,10 +1,10 @@
 /*
- * @Descripttion: 
+ * @Descripttion: 百度机器人对接
  * @version: 
  * @Author: wangjunwei
  * @Date: 2020-07-07 13:47:16
  * @LastEditors: wangjunwei
- * @LastEditTime: 2020-07-07 16:15:56
+ * @LastEditTime: 2020-07-07 17:10:09
  */ 
 var https = require('https');
 var request = require("request")
@@ -22,31 +22,27 @@ var options = {
 };
 var data = ''
 var rpcResult = ''
+var send = '1'
 var req = https.request(
     options,
     function (res) {
-        // 在标准输出中查看运行结果
-        //res.pipe(process.stdout);
-        //let resu = JSON.parse(body);
-        //console.log(res.write)
-        //console.log('请求头:', res.headers);
-        //console.log('data:', process.stdout);
         res.on('data', (d) => {
-            //process.stdout.write(d);
             data += d
-            //console.log(JSON.parse(d))
-          })
+        })
         //console.log(JSON.parse(data))
         res.on('end',function(){
             rpcResult = JSON.parse(data)
             //console.log(data)
             //console.log(rpcResult)
-            let x1=rpcResult.result.response_list
-            
-            console.log(rpcResult.result.response_list) //从这里取出来
+            send=rpcResult.result.response_list[0].action_list[0].say
+            //打印回复的消息
+            console.log(send)
+        })
+        req.on('error',function (e){
+            console.log(new Error('problem with request:' + e.message));
         })
     }
-    //return 
+     
 );
 var postData = {
     'log_id': 'UNITTEST_10000',
@@ -60,6 +56,5 @@ var postData = {
 };
 // 携带数据发送https请求
 req.write(JSON.stringify(postData));
-//let send = req()
-//console.log(res.data)
 req.end();
+console.log(send)
