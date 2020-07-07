@@ -18,7 +18,8 @@
     "request": "^2.88.0",
     "urlencode": "^1.1.0",
     "wechaty": "^0.40.10",
-    "wechaty-puppet-padplus": "^0.6.3"
+    "wechaty-puppet-padplus": "^0.6.3",
+    "dialogflow": "^1.2.0"
   },
   "bugs": {
     "url": "https://github.com/gavinwang23/mybot/issues"
