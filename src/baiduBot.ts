@@ -4,23 +4,77 @@
  * @Author: wangjunwei
  * @Date: 2020-07-07 13:47:16
  * @LastEditors: wangjunwei
- * @LastEditTime: 2020-07-07 21:46:29
+ * @LastEditTime: 2020-07-09 19:20:43
  */ 
 var https = require('https');
 var request = require("request")
 var qs = require('querystring');
-var param = qs.stringify({
-    'access_token': '24.0656ee5c202b325588145f78fe24430b.2592000.1596689746.282335-21168496'
+const config2 = require('./config.ts')
+const myMessage2 = require('./myMessage.ts')
+
+//获取token
+const param = qs.stringify({
+    'grant_type': 'client_credentials',
+    'client_id': config2.baidu_apikey,
+    'client_secret': config2.baidu_secretkey
+});
+
+var baidutoken = ''
+console.log('准备百度token')
+async function baiduToken(){
+    var baidutoken = await requestToken()
+    return baidutoken
+}
+//baidutoken = baiduToken()
+
+console.log("baidutoken:" + baidutoken)
+
+//请求聊天接口参数准备
+var token = qs.stringify({
+    'access_token': "24.4c44f0798b8a45186012c9f367e1d151.2592000.1596845829.282335-21168496"
 });
 var options = {
     hostname: 'aip.baidubce.com',
-    path: '/rpc/2.0/unit/service/chat?' + param,
+    path: '/rpc/2.0/unit/service/chat?' + token,
     method: 'POST',
     headers: {
         'Content-Type': 'application/json; charset=UTF-8'
     }
 };
 console.log("百度bot准备好了")
+
+
+
+/**
+ * @description: 获取百度token
+ * @param 
+ * @return {Promise} 
+ */
+function requestToken(){
+    return new Promise((resolve, reject) => {
+        var data2 = ''
+        var access_token = ''
+        https.get(
+            {
+                hostname: 'aip.baidubce.com',
+                path: '/oauth/2.0/token?' + param,
+                agent: false
+            },
+            function (res) {
+                res.on('data', (d) => {
+                    data2 += d
+                    access_token = JSON.parse(data2).access_token
+                    console.log(access_token)
+                    resolve(access_token)
+                })
+                // 在标准输出中查看运行结果
+                //res.pipe(process.stdout);
+            }
+        );
+    })
+}
+
+
 
 
 /**
@@ -33,7 +87,7 @@ module.exports = function requestBot(info){
         //resolve("hello test")
         var data = ''
         var rpcResult = ''
-        var send = '1'
+        var send = ''
         var req = https.request(
             options,
             function (res) {

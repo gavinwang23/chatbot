@@ -14,12 +14,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "dialogflow": "^1.2.0",
     "qrcode-terminal": "^0.12.0",
     "request": "^2.88.0",
     "urlencode": "^1.1.0",
     "wechaty": "^0.40.10",
-    "wechaty-puppet-padplus": "^0.6.3",
-    "dialogflow": "^1.2.0"
+    "wechaty-puppet-padplus": "^0.6.3"
   },
   "bugs": {
     "url": "https://github.com/gavinwang23/mybot/issues"
