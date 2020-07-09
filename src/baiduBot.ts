@@ -4,7 +4,7 @@
  * @Author: wangjunwei
  * @Date: 2020-07-07 13:47:16
  * @LastEditors: wangjunwei
- * @LastEditTime: 2020-07-09 19:20:43
+ * @LastEditTime: 2020-07-10 00:46:28
  */ 
 var https = require('https');
 var request = require("request")
@@ -19,30 +19,15 @@ const param = qs.stringify({
     'client_secret': config2.baidu_secretkey
 });
 
-var baidutoken = ''
+var baidutoken
 console.log('准备百度token')
+
 async function baiduToken(){
-    var baidutoken = await requestToken()
-    return baidutoken
+    baidutoken = await requestToken()
+    return baidutoken 
 }
-//baidutoken = baiduToken()
-
+baiduToken()
 console.log("baidutoken:" + baidutoken)
-
-//请求聊天接口参数准备
-var token = qs.stringify({
-    'access_token': "24.4c44f0798b8a45186012c9f367e1d151.2592000.1596845829.282335-21168496"
-});
-var options = {
-    hostname: 'aip.baidubce.com',
-    path: '/rpc/2.0/unit/service/chat?' + token,
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json; charset=UTF-8'
-    }
-};
-console.log("百度bot准备好了")
-
 
 
 /**
@@ -51,7 +36,7 @@ console.log("百度bot准备好了")
  * @return {Promise} 
  */
 function requestToken(){
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         var data2 = ''
         var access_token = ''
         https.get(
@@ -64,7 +49,7 @@ function requestToken(){
                 res.on('data', (d) => {
                     data2 += d
                     access_token = JSON.parse(data2).access_token
-                    console.log(access_token)
+                    console.log('获取的token为'+access_token)
                     resolve(access_token)
                 })
                 // 在标准输出中查看运行结果
@@ -84,7 +69,19 @@ function requestToken(){
  */
 module.exports = function requestBot(info){
     return new Promise((resolve, reject) => {
-        //resolve("hello test")
+        //请求聊天接口参数准备
+        
+        var token = qs.stringify({
+            'access_token': '24.fbcc6f72f52bb3a2b54d964024e68441.2592000.1596904224.282335-21168496'
+        });
+        var options = {
+            hostname: 'aip.baidubce.com',
+            path: '/rpc/2.0/unit/service/chat?' + token,
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json; charset=UTF-8'
+            }
+        };
         var data = ''
         var rpcResult = ''
         var send = ''
@@ -98,7 +95,7 @@ module.exports = function requestBot(info){
                 res.on('end',function(){
                     rpcResult = JSON.parse(data)
                     //console.log(data)
-                     //console.log(rpcResult)
+                    console.log(rpcResult)
                     send=rpcResult.result.response_list[0].action_list[0].say
                     //打印回复的消息
                     //console.log(send)
@@ -111,7 +108,7 @@ module.exports = function requestBot(info){
      
         );
         var postData = {
-            'log_id': 'UNITTEST_10000',
+            'log_id': 'UNITTEST_10002',
             'version': '2.0',
             'service_id': 'S31458',
             'session_id': '',
