@@ -72,7 +72,7 @@ module.exports = function requestBot(info){
         //请求聊天接口参数准备
         
         var token = qs.stringify({
-            'access_token': '24.fbcc6f72f52bb3a2b54d964024e68441.2592000.1596904224.282335-21168496'
+            'access_token': baidutoken
         });
         var options = {
             hostname: 'aip.baidubce.com',
