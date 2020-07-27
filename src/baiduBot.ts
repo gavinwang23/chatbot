@@ -10,7 +10,6 @@ var https = require('https');
 var request = require("request")
 var qs = require('querystring');
 const config2 = require('./config.ts')
-const myMessage2 = require('./myMessage.ts')
 
 //获取token
 const param = qs.stringify({
