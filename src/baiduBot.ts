@@ -4,7 +4,7 @@
  * @Author: wangjunwei
  * @Date: 2020-07-07 13:47:16
  * @LastEditors: wangjunwei
- * @LastEditTime: 2020-07-10 00:46:28
+ * @LastEditTime: 2020-07-10 00:51:58
  */ 
 var https = require('https');
 var request = require("request")
@@ -82,6 +82,7 @@ module.exports = function requestBot(info){
                 'Content-Type': 'application/json; charset=UTF-8'
             }
         };
+        
         var data = ''
         var rpcResult = ''
         var send = ''
