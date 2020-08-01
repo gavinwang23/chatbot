@@ -10,7 +10,6 @@ var https = require('https');
 var request = require("request")
 var qs = require('querystring');
 const config2 = require('./config.ts')
-const myMessage2 = require('./myMessage.ts')
 
 //获取token
 const param = qs.stringify({
@@ -72,7 +71,7 @@ module.exports = function requestBot(info){
         //请求聊天接口参数准备
         
         var token = qs.stringify({
-            'access_token': '24.fbcc6f72f52bb3a2b54d964024e68441.2592000.1596904224.282335-21168496'
+            'access_token': baidutoken
         });
         var options = {
             hostname: 'aip.baidubce.com',
